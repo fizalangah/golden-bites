@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Golden Bites Café, Gulshan Karachi — smash burgers, loaded fries, cold brews & more. Order directly on WhatsApp." />
+  <title>Golden Bites Café — Gulshan Karachi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#14100a;
+      --card:#1e1811;
+      --cream:#faf3e7;
+      --muted:#c9bda8;
+      --accent:#e8953f;
+      --accent2:#c94f2d;
+      --line:#33291d;
+      --green:#25d366;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--cream);line-height:1.6}
+    .wrap{width:min(1080px,92%);margin:0 auto}
+    h1,h2,h3{font-family:'Fraunces',serif;line-height:1.15}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* ===== NAV ===== */
+    nav{position:sticky;top:0;z-index:50;background:rgba(20,16,10,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .nav-in{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:800}
+    .logo-dot{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:#1c130a}
+    .nav-links{display:flex;align-items:center;gap:26px;font-size:14px;color:var(--muted)}
+    .nav-links a:hover{color:var(--cream)}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#052e16;font-weight:700;font-size:14px;padding:11px 20px;border-radius:99px;transition:transform .15s,box-shadow .15s}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -10px rgba(37,211,102,.55)}
+    .btn.ghost{background:transparent;color:var(--cream);border:1px solid var(--line);box-shadow:none}
+    .btn.ghost:hover{box-shadow:none;border-color:var(--accent)}
+    .burger{display:none;background:none;border:0;color:var(--cream);font-size:24px;cursor:pointer}
+    @media(max-width:720px){
+      .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 0}
+      .nav-links.open{display:flex}
+      .nav-links a{padding:12px 24px;width:100%}
+      .nav-links .btn{margin:8px 24px 12px}
+      .burger{display:block}
+    }
+
+    /* ===== HERO ===== */
+    header{position:relative;overflow:hidden;padding:90px 0 100px;text-align:center;
+      background:radial-gradient(800px 480px at 50% -120px,#4d2a12 0%,transparent 60%),var(--bg)}
+    header h1{font-size:clamp(40px,7vw,74px);max-width:800px;margin:0 auto}
+    header h1 em{font-style:normal;background:linear-gradient(120deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .kicker{display:inline-flex;gap:8px;align-items:center;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);border:1px solid #5a3a1c;padding:8px 16px;border-radius:99px;margin-bottom:22px}
+    header p{color:var(--muted);max-width:520px;margin:22px auto 0;font-size:17px}
+    .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+    .stats{display:flex;gap:0;justify-content:center;margin-top:56px;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--card)}
+    .stat{flex:1;padding:22px 10px;border-right:1px solid var(--line)}
+    .stat:last-child{border-right:0}
+    .stat b{display:block;font-family:'Fraunces',serif;font-size:30px;color:var(--accent)}
+    .stat span{font-size:12px;color:var(--muted)}
+    @media(max-width:560px){.stats{flex-direction:column}.stat{border-right:0;border-bottom:1px solid var(--line)}.stat:last-child{border-bottom:0}}
+
+    /* ===== ABOUT ===== */
+    section{padding:86px 0}
+    .sec-label{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+    .sec-title{font-size:clamp(28px,4vw,40px);margin:10px 0 16px}
+    .sec-sub{color:var(--muted);max-width:560px}
+    .feats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+    .feat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}
+    .feat-ic{width:44px;height:44px;border-radius:12px;background:#3a2412;display:grid;place-items:center;font-size:20px;margin-bottom:14px}
+    .feat h3{font-size:19px;margin-bottom:6px}
+    .feat p{font-size:14px;color:var(--muted)}
+    @media(max-width:720px){.feats{grid-template-columns:1fr}}
+
+    /* ===== MENU ===== */
+    #menu{background:#1a130c;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .menu-head{display:flex;align-items:end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin-top:44px}
+    .dish{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:8px 8px 18px;display:flex;flex-direction:column}
+    .dish-img{height:140px;border-radius:12px;display:grid;place-items:center;color:#fff;font-family:'Fraunces',serif;font-size:44px;font-weight:700;letter-spacing:.05em}
+    .dish-body{display:flex;flex-direction:column;flex:1;padding:14px 10px 0}
+    .dish-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .dish-top h3{font-size:17px}
+    .dish-tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);border:1px solid #5c2c1c;padding:3px 8px;border-radius:99px;white-space:nowrap}
+    .dish-top h3.tagline{color:var(--accent)}
+    .dish p{font-size:13px;color:var(--muted);margin-top:8px;flex:1}
+    .dish-foot{display:flex;align-items:center;justify-content:space-between;margin-top:14px}
+    .price{font-family:'Fraunces',serif;font-size:20px;color:var(--cream)}
+    .ord{font-size:12px;font-weight:700;background:#3a2412;color:var(--accent);border:1px solid #5a3a1c;padding:8px 14px;border-radius:99px;transition:.15s}
+    .ord:hover{background:var(--accent);color:#1c130a;border-color:var(--accent)}
+
+    /* ===== VISIT ===== */
+    .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:44px}
+    .visit-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px}
+    .visit-card h3{font-size:20px;margin-bottom:10px}
+    .visit-card ul{list-style:none}
+    .visit-card li{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14px;color:var(--muted)}
+    .visit-card li b{color:var(--cream);font-weight:600}
+    .visit-card li:last-child{border-bottom:0}
+    @media(max-width:720px){.visit-grid{grid-template-columns:1fr}}
+
+    footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--muted);font-size:13px}
+    footer a{color:var(--accent)}
+    footer .brand{font-family:'Fraunces',serif;color:var(--cream)}
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrap nav-in">
+      <a href="#" class="logo"><span class="logo-dot">GB</span>Golden Bites</a>
+      <button class="burger" aria-label="Menu">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#visit">Visit</a>
+        <a href="https://wa.me/923182842251?text=Salaam+Golden+Bites!+I%27d+like+to+order." target="_blank" rel="noopener" class="btn">Order on WhatsApp</a>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap">
+      <span class="kicker">● Gulshan-e-Iqbal, Karachi &nbsp;·&nbsp; Open till 1 AM</span>
+      <h1>Crave it. <em>Order it.</em><br/>Smash it in minutes.</h1>
+      <p>Smash burgers, cheesy loaded fries and cold brews — made fresh, served fast. Order straight from WhatsApp, skip the queue.</p>
+      <div class="hero-cta">
+        <a href="https://wa.me/923182842251?text=Salaam+Golden+Bites!+I%27d+like+to+order." target="_blank" rel="noopener" class="btn">Order on WhatsApp →</a>
+        <a href="#menu" class="btn ghost">See the menu</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>15 min</b><span>Average delivery time</span></div>
+        <div class="stat"><b>4.9★</b><span>From 1,200+ reviews</span></div>
+        <div class="stat"><b>1 AM</b><span>Open late, every night</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="wrap">
+      <span class="sec-label">Why Golden Bites</span>
+      <h2 class="sec-title">Fast food that<br/>actually gives a damn.</h2>
+      <p class="sec-sub">No frozen patties, no shortcuts. Each burger is smashed to order, each fry topped fresh. That's the Golden Bites way.</p>
+      <div class="feats">
+        <div class="feat">
+          <div class="feat-ic">🥩</div>
+          <h3>Fresh daily</h3>
+          <p>Beef patties made in-house every morning. No day-old stock, ever.</p>
+        </div>
+        <div class="feat">
+          <div class="feat-ic">💬</div>
+          <h3>Order on WhatsApp</h3>
+          <p>No apps, no signups. Send a message and your food is on the way.</p>
+        </div>
+        <div class="feat">
+          <div class="feat-ic">⚡</div>
+          <h3>Built for late-night</h3>
+          <p>Kitchen runs till 1 AM. That 12:40 AM burger craving? Covered.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="wrap">
+      <div class="menu-head">
+        <div>
+          <span class="sec-label">The Menu</span>
+          <h2 class="sec-title">Signature picks</h2>
+        </div>
+        <p class="sec-sub" style="margin:0">Tap any dish to order it straight on WhatsApp.</p>
+      </div>
+
+      <div class="grid" id="dishes">
+        <div class="dish">
+          <div class="dish-img" style="background:linear-gradient(135deg,#8a5a2b,#c94f2d)">🔥</div>
+          <div class="dish-body">
+            <div class="dish-top"><h3>The Smash Classic</h3><span class="dish-tag">Bestseller</span></div>
+            <p>Double smashed beef, melted cheddar, house sauce, pickles on a toasted brioche.</p>
+            <div class="dish-foot"><span class="price">Rs 549</span><a class="ord" href="https://wa.me/923182842251" target="_blank" rel="noopener">Order →</a></div>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-img" style="background:linear-gradient(135deg,#5c2c1c,#e8953f)">🧀</div>
+          <div class="dish-body">
+            <div class="dish-top"><h3>Loaded Fries</h3><span class="dish-tag">House fav</span></div>
+            <p>Crispy fries drowned in cheese sauce, jalapeños and smoky beef chunks.</p>
+            <div class="dish-foot"><span class="price">Rs 449</span><a class="ord" href="https://wa.me/923182842251?text=Salaam!+I%27d+like+1x+Loaded+Fries." target="_blank" rel="noopener">Order →</a></div>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-img" style="background:linear-gradient(135deg,#2c3f2a,#6fb364)">🥗</div>
+          <div class="dish-body">
+            <div class="dish-top"><h3>Crispy Chicken</h3><span class="dish-tag">New</span></div>
+            <p>Double-fried chicken, tangy slaw, spicy mayo in a soft potato bun.</p>
+            <div class="dish-foot"><span class="price">Rs 579</span><a class="ord" href="https://wa.me/923182842251?text=Salaam!+I%27d+like+1x+Crispy+Chicken." target="_blank" rel="noopener">Order →</a></div>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-img" style="background:linear-gradient(135deg,#3a2c1c,#a9743f)">🥤</div>
+          <div class="dish-body">
+            <div class="dish-top"><h3>Cold Brew</h3><span class="dish-tag tagline">Drinks</span></div>
+            <p>Steeped 18 hours. Smooth, strong, no bitterness. Served over ice.</p>
+            <div class="dish-foot"><span class="price">Rs 349</span><a class="ord" href="https://wa.me/923182842251?text=Salaam!+I%27d+like+1x+Cold+Brew." target="_blank" rel="noopener">Order →</a></div>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-img" style="background:linear-gradient(135deg,#4a1c2c,#c94f2d)">🍔</div>
+          <div class="dish-body">
+            <div class="dish-top"><h3>Spicy Volcano</h3><span class="dish-tag tagline">Spicy</span></div>
+            <p>Triple smash, ghost-pepper sauce, red onion. For the brave only. 🔥🌶️</p>
+            <div class="dish-foot"><span class="price">Rs 649</span><a class="ord" href="https://wa.me/923182842251?text=Salaam!+I%27d+like+1x+Spicy+Volcano." target="_blank" rel="noopener">Order →</a></div>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-img" style="background:linear-gradient(135deg,#25343c,#7e9bb0)">🍫</div>
+          <div class="dish-body">
+            <div class="dish-top"><h3>Shake &amp; Cookies</h3><span class="dish-tag tagline">Dessert</span></div>
+            <p>Thick shake + warm choco-chip cookie. Share one, or don't — we won't judge.</p>
+            <div class="dish-foot"><span class="price">Rs 499</span><a class="ord" href="https://wa.me/923182842251?text=Salaam!+I%27d+like+1x+Shake+and+Cookies." target="_blank" rel="noopener">Order →</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit">
+    <div class="wrap">
+      <span class="sec-label">Find Us</span>
+      <h2 class="sec-title">Come say salaam,<br/>or stay home and order.</h2>
+      <div class="visit-grid">
+        <div class="visit-card">
+          <h3>📍 Visit us</h3>
+          <ul>
+            <li><span>Address</span><b>Shop 12, Block 4, Gulshan-e-Iqbal, Karachi</b></li>
+            <li><span>Kitchen hours</span><b>12 PM – 1 AM</b></li>
+            <li><span>Phone</span><b>0318 2842251</b></li>
+          </ul>
+        </div>
+        <div class="visit-card">
+          <h3>🕐 We're open</h3>
+          <ul>
+            <li><span>Mon – Thu</span><b>12 PM – 12 AM</b></li>
+            <li><span>Fri – Sat</span><b>12 PM – 1 AM</b></li>
+            <li><span>Sunday</span><b>12 PM – 12 AM</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div>© 2026 <span class="brand">Golden Bites Café</span> · Gulshan-e-Iqbal · Made with BrandRise</div>
+      <div style="margin-top:6px">Sample business website by <a href="https://brandrise.online" target="_blank" rel="noopener">@brandrise.online</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const burger = document.querySelector('.burger');
+    const navLinks = document.getElementById('navLinks');
+    burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  </script>
+</body>
+</html>
